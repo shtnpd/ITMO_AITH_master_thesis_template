@@ -1,0 +1,51 @@
+% Используем XeLaTeX – настраиваем шрифт через fontspec
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+% Настройка полей (левое: 30 мм, правое: 15 мм (можно 10 мм), верхнее: 20 мм, нижнее: 20 мм)
+\usepackage[a4paper,top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry}
+
+% Межстрочный интервал 1.5 (14 пт рекомендуемый размер шрифта, можно задавать через документ или в настройках Overleaf)
+\usepackage{setspace}
+\onehalfspacing
+
+% Абзацный отступ 1.25 см
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% Нумерация страниц: арабскими цифрами, по центру нижней части
+\usepackage{fancyhdr}
+\pagestyle{plain}
+\fancyhf{}
+\cfoot{\thepage}
+
+% Настройка заголовков через titlesec
+\usepackage{titlesec}
+% Заголовки глав: прописными буквами, полужирно, по центру, без точки в конце
+\titleformat{\chapter}[hang]{\bfseries\Large\centering}{\thechapter}{1em}{}
+% Заголовки разделов и подразделов – с абзацным отступом
+\titleformat{\section}[hang]{\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}[hang]{\bfseries}{\thesubsection}{1em}{}
+\titlespacing{\chapter}{0pt}{0pt}{20pt}
+\titlespacing{\section}{0pt}{12pt}{6pt}
+\titlespacing{\subsection}{0pt}{6pt}{3pt}
+
+% Настройка содержания: точечные лидеры между заголовками и номерами страниц
+\usepackage{tocloft}
+\renewcommand{\cftdotsep}{1}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% Подключаем отдельные конфигурационные файлы для списков, формул, таблиц и изображений
+\input{configs/config-lists.tex}
+\input{configs/config-formulas.tex}
+\input{configs/config-tables.tex}
+\input{configs/config-images.tex}
+
+% Дополнительные пакеты
+\usepackage[backend=biber,style=gost-numeric,sorting=none]{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage{booktabs}
+
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\captionsetup[table]{labelformat=empty}

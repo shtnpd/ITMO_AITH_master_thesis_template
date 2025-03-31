@@ -1,0 +1,43 @@
+\documentclass[14pt,a4paper,oneside,openany]{book}
+\let\cleardoublepage\clearpage
+
+% Подключаем общий preamble
+\input{preamble.tex}
+
+\begin{document}
+
+% Содержание — отдельный лист, заголовок прописными, без номера
+\chapter*{СОДЕРЖАНИЕ}
+\markboth{СОДЕРЖАНИЕ}{}
+\vspace{-3.5cm} 
+{%
+  \renewcommand{\contentsname}{}%
+  \tableofcontents
+}
+
+% Список сокращений и условных обозначений
+\input{abbreviations.tex}
+\cleardoublepage
+
+% Список терминов и определений
+\input{terms.tex}
+\cleardoublepage
+
+% Основной текст работы
+\mainmatter
+\input{chapters/intro.tex}
+\input{chapters/chapter1.tex}
+\input{chapters/chapter2.tex}
+\input{chapters/conclusion.tex}
+
+% Список использованных источников
+\addcontentsline{toc}{chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+\nocite{*}
+\printbibliography[title={СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}]
+
+% Приложения
+\appendix
+\input{appendix/appA.tex}
+
+\end{document}
+

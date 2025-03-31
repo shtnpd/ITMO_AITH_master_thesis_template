@@ -1,0 +1,71 @@
+% Подключаем нужные пакеты для таблиц и оформления
+\usepackage{booktabs}   % Для красивых горизонтальных линий (\toprule, \midrule, \bottomrule)
+\usepackage{multirow}   % Для объединения ячеек по вертикали
+\usepackage{caption}    % Для \ContinuedFloat (продолжение таблицы)
+
+% ------------------------
+% Шаблон: Многоуровневый заголовок
+% ------------------------
+\newcommand{\ExampleMultiLevelTable}{%
+\begin{table}[h!]
+\caption{Таблица 1 --- Пример построения таблицы}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Заголовок}} & \multicolumn{2}{c|}{\textbf{Заголовок колонки}} & \multirow{2}{*}{\textbf{Заголовок колонки}}\\
+\cline{2-3}
+& \textbf{Подзаголовок} & \textbf{Подзаголовок} & \\
+\hline
+A & B & C & D \\
+\hline
+\end{tabular}
+\end{table}
+}
+
+% Шаблон: "Разбитая" таблица (две части под одним номером)
+\newcommand{\ExampleSplitTable}{%
+  % --- Первая часть ---
+  \begin{table}[h!]
+    \LeftCaption
+    \caption{Таблица 5.1 --- Пример переноса таблицы} \\
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Заголовок} & \textbf{Заголовок колонки} & \textbf{Заголовок колонки} & \textbf{Заголовок колонки} \\
+    \hline
+    1 & 2 & 3 & 4 \\
+    \hline
+    2 & 3 & 4 & 5 \\
+    \hline
+    \end{tabular}
+  \end{table}
+
+  % --- Продолжение ---
+  \begin{table}[h!]
+    \ContinuedFloat
+    \RightCaption
+    \caption*{Продолжение таблицы 5.1} \\
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Заголовок} & \textbf{Заголовок колонки} & \textbf{Заголовок колонки} & \textbf{Заголовок колонки} \\
+    \hline
+    3 & 4 & 5 & 6 \\
+    \hline
+    4 & 5 & 6 & 7 \\
+    \hline
+    \end{tabular}
+  \end{table}
+}
+
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{etoolbox}
+
+% Настройка выравнивания заголовков
+\captionsetup[table]{justification=raggedright, singlelinecheck=false}
+
+% Переключатель для смены выравнивания заголовков
+\newcommand*\RightCaption{\captionsetup{justification=raggedleft}}
+\newcommand*\LeftCaption{\captionsetup{justification=raggedright}}
+
