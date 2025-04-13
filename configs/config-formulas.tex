@@ -1,2 +1,31 @@
+% Подключение пакета для теорем
+\usepackage{amsthm}
 \usepackage{amsmath}
+
+% Локализация заголовков теорем на русский
+\newtheoremstyle{russian}% имя
+  {3pt}% Отступ сверху
+  {3pt}% Отступ снизу
+  {\itshape}% Шрифт тела теоремы
+  {}% Отступ слева
+  {\bfseries}% Шрифт заголовка
+  {}% Знак после заголовка
+  { }% Интервал после заголовка
+  {\thmname{#1}~\thmnumber{#2}\thmnote{~(#3)}}% Формат
+
+\theoremstyle{russian}
+
+% Определяем теоремы с нумерацией по главам
+\newtheorem{theorem}{Теорема}[chapter]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+
+% Ненумерованное определение (например, доказательство)
+\theoremstyle{definition}
+\newtheorem*{definition}{Определение}
+\newtheorem*{remark}{Замечание}
+
+% Доказательство (встроено в amsthm)
+\renewcommand{\proofname}{Доказательство}
 \numberwithin{equation}{chapter} % Формулы нумеруются по главам (например, (1.1), (1.2) и т.д.)
