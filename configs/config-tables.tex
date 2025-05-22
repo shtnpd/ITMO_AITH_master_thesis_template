@@ -8,7 +8,7 @@
 % ------------------------
 \newcommand{\ExampleMultiLevelTable}{%
 \begin{table}[h!]
-\caption{Таблица 1 --- Пример построения таблицы}
+\caption{Пример построения таблицы}
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -27,7 +27,7 @@ A & B & C & D \\
   % --- Первая часть ---
   \begin{table}[h!]
     \LeftCaption
-    \caption{Таблица 5.1 --- Пример переноса таблицы}
+    \caption{Пример переноса таблицы}
     \centering
     \begin{tabular}{|c|c|c|c|}
     \hline
@@ -61,9 +61,10 @@ A & B & C & D \\
 \usepackage{caption}
 \usepackage{longtable}
 \usepackage{etoolbox}
+\DeclareCaptionLabelSeparator{emdash}{\space---\space}  % пробел, длинное тире, пробел
 
 % Настройка выравнивания заголовков
-\captionsetup[table]{justification=raggedright, singlelinecheck=false}
+\captionsetup[table]{position=t, singlelinecheck=false, justification=raggedright, labelsep=emdash, name=Таблица}
 
 % Переключатель для смены выравнивания заголовков
 \newcommand*\RightCaption{\captionsetup{justification=raggedleft}}

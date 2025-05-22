@@ -46,6 +46,20 @@
 \addbibresource{bibliography.bib}
 \usepackage{booktabs}
 
-\usepackage{caption}
-\captionsetup[figure]{labelformat=empty}
-\captionsetup[table]{labelformat=empty}
+% какие буквы можно использовать в TOC, тк буквы Ё, З, Й, О, Ч, Ъ, Ы, Ь не должны встречаться
+\def\cyrtoc#1{\ifcase #1\or А\or Б\or В\or Г\or Д\or Е\or Ж\or И\or К\or Л\or М\or Н\or П\or Р\or С\or Т\or У\or Ф\or Х\or Ц\or Ш\or Щ\or Э\or Ю\or Я\else \@ctrerr \fi}
+
+\newcommand\originalappendix{}
+\let\originalappendix\appendix
+\renewcommand{\appendix}{%
+  \originalappendix
+  \renewcommand{\thechapter}{\cyrtoc{\value{chapter}}}
+  \renewcommand{\appendixname}{ПРИЛОЖЕНИЕ}
+  \titleformat{\chapter}{\Large\bfseries\centering}{\MakeUppercase{\chaptertitlename}.\ \thechapter}{4pt}{}
+
+  \addtocontents{toc}{\protect\value{tocdepth}=\chaptertocdepth}
+  \renewcommand\addchaptertocentry[2]{%
+    \addtocentrydefault{chapter}{}{\appendixname~##1 ##2}
+  }
+}
+

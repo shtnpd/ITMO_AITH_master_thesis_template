@@ -49,6 +49,10 @@ ITMO_AITH_master_thesis_template/
    pdflatex main.tex
    pdflatex main.tex
    ```
+   или **latexmk**
+   ```bash
+   latexmk -xelatex -f -interaction=nonstopmode main.tex
+   ```
 
 ## ✍️ Как редактировать
 
